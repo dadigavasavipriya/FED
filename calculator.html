@@ -9,6 +9,7 @@
      background-color:lightyellow;
      border-radius:5px;
      margin:2px;
+     font-size:21px;
   }
   #infield{
    height:30px;
@@ -16,9 +17,9 @@
    margin:3px 7px 3px 5px;
    background-color:#f2efe6;
    border-radius:5px;
+   font-size:21px;
   }
   table{
-    /*border-collapse:collapse;*/
     margin-top:50px;
     background-color:skyblue;
     border-radius:8px;
@@ -33,81 +34,51 @@
     <td colspan="4"><input type="text" name="cal" id="infield"></td>
   </tr>
   <tr>
-   <td><button id="op" value="(" onClick="myfunction(this)">(</button></td>
-   <td><button id="ce" value="ce" onClick="myfunction(this)">CE</button></td>
-   <td><button id="cl" value=")" onClick="myfunction(this)">)</button></td>
-   <td><button id="clear" value="c" onClick="myfunction(this)">C</button></td>
+   <td><button  value="(" onClick="myfunction(this)">(</button></td>
+   <td><button  value="ce" onClick="myfunction(this)">CE</button></td>
+   <td><button  value=")" onClick="myfunction(this)">)</button></td>
+   <td><button  value="c" onClick="myfunction(this)">C</button></td>
   </tr>
   <tr>
-   <td><button id="1" value"1" onClick="myfunction(this)">1</button></td>
-   <td><button id="2" value"2" onClick="myfunction(this)">2</button></td>
-   <td><button id="3" value="3" onClick="myfunction(this)">3</button></td>
-   <td><button id="add" value="+" onClick="myfunction(this)">+</button></td>
+   <td><button  value="1" onClick="myfunction(this)">1</button></td>
+   <td><button  value="2" onClick="myfunction(this)">2</button></td>
+   <td><button  value="3" onClick="myfunction(this)">3</button></td>
+   <td><button  value="+" onClick="myfunction(this)">+</button></td>
   </tr>
   <tr>
-   <td><button id="4" value="4" onClick="myfunction(this)">4</button></td>
-   <td><button id="5" value="5" onClick="myfunction(this)">5</button></td>
-   <td><button id="5" value="6" onClick="myfunction(this)">6</button></td>
-   <td><button id="sub" value="-" onClick="myfunction(this)">-</button></td>
+   <td><button value="4" onClick="myfunction(this)">4</button></td>
+   <td><button value="5" onClick="myfunction(this)">5</button></td>
+   <td><button value="6" onClick="myfunction(this)">6</button></td>
+   <td><button value="-" onClick="myfunction(this)">-</button></td>
   </tr>
   <tr>
-   <td><button id="7" value="7" onClick="myfunction(this)">7</button></td>
-   <td><button id="8" value="8" onClick="myfunction(this)">8</button></td>
-   <td><button id="9" value="9" onClick="myfunction(this)">9</button></td>
-   <td><button id="mul" value="x" onClick="myfunction(this)">x</button></td>
+   <td><button value="7" onClick="myfunction(this)">7</button></td>
+   <td><button value="8" onClick="myfunction(this)">8</button></td>
+   <td><button value="9" onClick="myfunction(this)">9</button></td>
+   <td><button value="*" onClick="myfunction(this)">*</button></td>
   </tr>
   <tr>
-   <td><button id="dec" value="." onClick="myfunction(this)">.</button></td>
-   <td><button id="zero" value="0" onClick="myfunction(this)">0</button></td>
-   <td><button id="equ" value="=" onClick="myfunction(this)">=</button></td>
-   <td><button id="div" value="/" onClick="myfunction(this)">/</button></td>
+   <td><button value="." onClick="myfunction(this)">.</button></td>
+   <td><button value="0" onClick="myfunction(this)">0</button></td>
+   <td><button value="=" onClick="myfunction(this)">=</button></td>
+   <td><button value="/" onClick="myfunction(this)">/</button></td>
   </tr>
  </table>
  <script>
     function myfunction(button){
       var text=button.getAttribute("value");
-      switch(text){
-    case "1":document.getElementById("infield").value=document.getElementById("infield").value+"1";
-                break;
-    case "2":document.getElementById("infield").value=document.getElementById("infield").value+"2";
-                break;
-    case "3":document.getElementById("infield").value=document.getElementById("infield").value+"2";
-                break;
-    case "5":document.getElementById("infield").value=document.getElementById("infield").value+"5";
-                break;
-    case "4":document.getElementById("infield").value=document.getElementById("infield").value+"4";
-                break;
-    case "6":document.getElementById("infield").value=document.getElementById("infield").value+"6";
-                break;
-    case "7":document.getElementById("infield").value=document.getElementById("infield").value+"7";
-                break;
-    case "8":document.getElementById("infield").value=document.getElementById("infield").value+"8";
-                break;
-    case "9":document.getElementById("infield").value=document.getElementById("infield").value+"9";
-                break;
-    case "0":document.getElementById("infield").value=document.getElementById("infield").value+"0";
-                break;
-    case "(":document.getElementById("infield").value=document.getElementById("infield").value+"(";
-                break;
-    case ")":document.getElementById("infield").value=document.getElementById("infield").value+")";
-                break;
-    case "+":document.getElementById("infield").value=document.getElementById("infield").value+"+";
-                break;
-    case "-":document.getElementById("infield").value=document.getElementById("infield").value+"-";
-                break;
-    case "x":document.getElementById("infield").value=document.getElementById("infield").value+"*";
-                break;
-    case "/":document.getElementById("infield").value=document.getElementById("infield").value+"/";
-                break;
-    case ".":document.getElementById("infield").value=document.getElementById("infield").value+"2";
-                break;
-    case "ce":var intext=document.getElementById("infield").value;
-    }
+      var str=document.getElementById("infield").value;
+      if(text==="ce")
+         str=str.substring(0,str.length-1);
+      else if(text==="c")
+         str=" ";
+      else if(text==="=")
+          str=eval(str);
+      else 
+          str=str+text;
+      document.getElementById("infield").value=str;
    }
-    </script>
+   </script>
 </body>
 </html>
- 
- 
- 
  
