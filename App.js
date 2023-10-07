@@ -1,35 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
-import HelloWorld from './Helloworld';
-import FruitsArray from './FruitsArray'
-import ArrayObj from './ArrayObj';
-import Changecolor from './Changecolor';
-import Counter from './Counter';
-
-function App() {
+import CounterFC from './CounterFC'
+import UseStateDem from './UseStateDem';
+import DigitalClock from './DigitalClock';
+import BlogContextDemo from './BlogContexttDemo';
+import React from 'react';
+  const blogInfo={
+    React:{
+        post:"Learn useContextHooks",
+        author:"Varun K"
+    },
+    NodeJS:{
+      post:'Node Commands',
+      author:'Veena M'
+    }
+  };
+  export const BlogContext=React.createContext(blogInfo);
+  export default function App(){
   return (
     <div className="App">
-      {/*<header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-  </header>*/}
-      {/*<HelloWorld/>*/}
-      {/*<FruitsArray/>*/}
-      {/*<ArrayObj/>*/}
-      {/*<Changecolor/>*/}
-      <Counter/>
+  <div>
+    <h1>UseContext() Demo</h1>
+    <BlogContext.Provider value={blogInfo}>
+      <BlogContextDemo/>
+    </BlogContext.Provider>
     </div>
+  </div>
   );
 }
 
-export default App;
+
